@@ -19,7 +19,7 @@ export class FiltryComponent {
   }
 
   get select(): Record<string, boolean> {
-    return this.produkty.select;
+    return this.produkty.select; 
   }
 
   set select(value: Record<string, boolean>) {
