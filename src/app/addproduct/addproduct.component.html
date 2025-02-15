@@ -3,11 +3,11 @@
     <h2>Dodaj produkt</h2>
     <form id="add-form">
       <div class="flex">
-      <input type="text" id="product-name" placeholder="Nazwa produktu" required>
-      <select id="category">
-        <option *ngFor="let nazwa of prod.kategorie">{{nazwa.charAt(0).toLocaleUpperCase() + nazwa.slice(1)}}</option>
+      <input type="text" id="product-name" placeholder="Nazwa produktu" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required>
+      <select id="category" [(ngModel)]="category" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let nazwa of prod.kategorie" [ngValue]="nazwa">{{nazwa.charAt(0).toLocaleUpperCase() + nazwa.slice(1)}}</option>
       </select>
-      <button type="submit">Dodaj</button>
+      <button type="submit" (click)="addProduct()">Dodaj</button>
     </div>
     </form>
   </section>

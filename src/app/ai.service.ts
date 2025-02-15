@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HfInference } from "@huggingface/inference"
 import { MessageType } from './message-type';
+import { generateStory } from './gemini';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,14 @@ export class AIService {
 
   }
 
-  public async  AI(system:string, user:string): Promise<string> {
+  public async  AI(system:string, user:string, model:string='gemini'): Promise<string> {
     let out = "";
+
+    if(model == 'gemini'){
+        let response = await generateStory("token_gemini", system+"\n\n"+user);
+        return response;
+      }
+      
 
       const stream = this.client.chatCompletionStream({
         model: "microsoft/phi-4",

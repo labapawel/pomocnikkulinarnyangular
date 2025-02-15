@@ -2,14 +2,9 @@
  <section class="checklist">
     <h2>Lista produktów</h2>
     <ul id="product-list">
-      <li>
-        <input type="checkbox">
-        <span>Marchewka</span>
-        <button class="remove-btn">Usuń</button>
-      </li>
-      <li>
-        <input type="checkbox">
-        <span>Kurczak</span>
+      <li *ngFor="let prod of produkty">
+        <input type="checkbox" (change)="save()" [(ngModel)]="prod.selected">
+        <span>{{prod.name}}</span>
         <button class="remove-btn">Usuń</button>
       </li>
     </ul>
